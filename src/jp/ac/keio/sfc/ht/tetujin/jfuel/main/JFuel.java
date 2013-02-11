@@ -70,8 +70,8 @@ public class JFuel {
 	public final String TOKEN = "?access_token=";
 	public final String OPTION_OFFSET = "&offset=";
 	public final String OPTION_COUNT = "&count=";
-	public final String OPTION_START = "&start=";
-	public final String OPTION_END = "&end=";
+	public final String OPTION_START = "&startDate=";
+	public final String OPTION_END = "&endDate=";
 	
 	
 	/**
@@ -194,11 +194,13 @@ public class JFuel {
 	}
 	
 	public JSONObject getListActivites(int offset, int count, String start, String end){
+		
 		String url = this.BASIC_URL + this.API_LIST_ACT + this.TOKEN + this.access_token;
-		if(offset!= 0) url += this.OPTION_COUNT  + count;
-		if(count != 0)		url += this.OPTION_OFFSET + offset;
+		if(count!= 0) url += this.OPTION_COUNT  + count;
+		if(offset != 0) url += this.OPTION_OFFSET + offset;
 		if(start!=null && dateformatChecker(start))	url += this.OPTION_START  + start;
 		if(end!=null && dateformatChecker(end))	url += this.OPTION_END    + end;
+		System.out.println("URL = " + url);
 		String jsonStr = sendHttpRequest(url);
 		return getJsonObj(jsonStr);
 	}
