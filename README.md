@@ -4,10 +4,10 @@ A Java client for the Nike+ API.
 
 Install
 --------
-case of using in Eclise:
+case of using this code in Eclipse:
 
 1. download this code
-2. start the eclipse and import this code ("file"->"import"->select this folder)
+2. start the Eclipse and import this code ("file"->"import"->select this folder)
 
 
 Preparation
