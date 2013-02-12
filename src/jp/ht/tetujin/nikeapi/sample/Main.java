@@ -1,4 +1,4 @@
-package jp.ht.tetujin.nike.sample;
+package jp.ht.tetujin.nikeapi.sample;
 
 import jp.ht.tetujin.nikeapi.core.JNikeAPI;
 
