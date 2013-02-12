@@ -4,8 +4,9 @@ A Java client for the Nike+ API.
 
 Install
 --------
+case of using in Eclise:
 1. download this code
-2. starting eclipse and import this code ("file"->"import"->select this folder)
+2. start the eclipse and import this code ("file"->"import"->select this folder)
 
 
 Preparation
