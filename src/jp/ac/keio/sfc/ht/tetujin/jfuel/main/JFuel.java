@@ -105,10 +105,11 @@ public class JFuel {
 		try {
 			URL url = new URL(strURL);
 			HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
+			
+			//setting for http header
 			con.setRequestMethod(this.method);
 			con.setDoOutput(true);
 			con.setInstanceFollowRedirects(false);
-			
 			con.setRequestProperty("Accept-Language", this.lang);      
 	        con.setRequestProperty("Accept",this.accept);
 	        con.setRequestProperty("appid",this.appid);
@@ -146,9 +147,7 @@ public class JFuel {
 			System.out.println("---------body内容の表示----------");
 			String line = "";
 			while ((line = br.readLine()) != null) {
-				//System.out.println(line);
 				jsonStr += line;
-				//System.out.println(jsonStr);
 			}
 			br.close();
 			con.disconnect();
@@ -165,7 +164,7 @@ public class JFuel {
 	 * 
 	 * @return
 	 */
-	public JSONObject getAgreageSportData(){
+	public JSONObject getAggregateSportData(){
 		String url = this.BASIC_URL + this.API_AGGREAGETE + TOKEN + this.access_token; 
 		//https://api.nike.com/me/sport?access_token={access_token}
 		String jsonStr = sendHttpRequest(url);
@@ -179,10 +178,6 @@ public class JFuel {
 	 */
 	public JSONObject getListActivites(){
 		return getListActivites(0, 0, null, null);
-//		String url = this.BASIC_URL + this.API_LIST_ACT + this.ACCESS_TOKEN;
-//		String jsonStr = sendHttpRequest(url);
-//		//https://api.nike.com/me/sport/activities?access_token={access_token}
-//		return getJsonObj(jsonStr);
 	}
 	
 	public JSONObject getListActivites(int count){
@@ -194,13 +189,12 @@ public class JFuel {
 	}
 	
 	public JSONObject getListActivites(int offset, int count, String start, String end){
-		
 		String url = this.BASIC_URL + this.API_LIST_ACT + this.TOKEN + this.access_token;
 		if(count!= 0) url += this.OPTION_COUNT  + count;
 		if(offset != 0) url += this.OPTION_OFFSET + offset;
 		if(start!=null && dateformatChecker(start))	url += this.OPTION_START  + start;
 		if(end!=null && dateformatChecker(end))	url += this.OPTION_END    + end;
-		System.out.println("URL = " + url);
+		System.out.println(url);
 		String jsonStr = sendHttpRequest(url);
 		return getJsonObj(jsonStr);
 	}
