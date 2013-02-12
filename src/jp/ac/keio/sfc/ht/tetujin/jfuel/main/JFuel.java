@@ -105,7 +105,7 @@ public class JFuel {
 		try {
 			URL url = new URL(strURL);
 			HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
-			
+			//HttpsURLConnection con = setHttpHeader(url);
 			//setting for http header
 			con.setRequestMethod(this.method);
 			con.setDoOutput(true);
@@ -160,6 +160,10 @@ public class JFuel {
 		return jsonStr;
 	}
 	
+	private HttpsURLConnection setHttpHeader() {
+		return null;
+	}
+
 	/**
 	 * 
 	 * @return
@@ -180,20 +184,39 @@ public class JFuel {
 		return getListActivites(0, 0, null, null);
 	}
 	
+	/**
+	 * 
+	 * @param count
+	 * @return
+	 */
 	public JSONObject getListActivites(int count){
 		return getListActivites(0, count, null, null);
 	}
 
+	/**
+	 * 
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	public JSONObject getListActivites(String start, String end){
 		return getListActivites(0,0, start, end);
 	}
 	
+	/**
+	 * 
+	 * @param offset
+	 * @param count
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	public JSONObject getListActivites(int offset, int count, String start, String end){
 		String url = this.BASIC_URL + this.API_LIST_ACT + this.TOKEN + this.access_token;
-		if(count!= 0) url += this.OPTION_COUNT  + count;
+		if(count!= 0) 	url += this.OPTION_COUNT  + count;
 		if(offset != 0) url += this.OPTION_OFFSET + offset;
 		if(start!=null && dateformatChecker(start))	url += this.OPTION_START  + start;
-		if(end!=null && dateformatChecker(end))	url += this.OPTION_END    + end;
+		if(end!=null && dateformatChecker(end))		url += this.OPTION_END    + end;
 		System.out.println(url);
 		String jsonStr = sendHttpRequest(url);
 		return getJsonObj(jsonStr);
@@ -266,6 +289,14 @@ public class JFuel {
 	
 	/**
 	 * 
+	 * @param access_token
+	 */
+	public void setAccessToken(final String access_token){
+		this.access_token = access_token;
+	}
+	
+	/**
+	 * 
 	 * @param lang
 	 */
 	public void setLang(final String lang){
@@ -320,11 +351,10 @@ public class JFuel {
 			JSONObject jsonObj = new JSONObject(jsonStr);
 			return jsonObj;
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.err.println("error!");
+			return null;
 		}
-		System.err.println("error!");
-		return null;
 	}
 	
 	/**

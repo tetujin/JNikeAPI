@@ -28,7 +28,7 @@ public class Main{
 //		JSONObject result = nike.getGPSData("caf41be4-b92e-4655-a5e1-0c6d2464cfdb");
 		
 		//Json形式データの表示
-		System.out.println("\n--------ここけらJSONの中身の表示---------------");
+		System.out.println("\n--------ここからJSONの中身の表示---------------");
 		try {
 			JSONArray names = result.names();
 			for(int i=0; i<result.length(); i++){
