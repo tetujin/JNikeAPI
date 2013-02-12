@@ -1,4 +1,4 @@
-package jp.ac.keio.sfc.ht.tetujin.jfuel.main;
+package jp.ac.keio.sfc.ht.tetujin.nike.api.core;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,10 +48,10 @@ SOFTWARE.
  *  4) [GPS Data]  GET https://api.nike.com/me/sport/activities/104019031/gps?access_token={access_token}
  * @author tetujin
  * @since 2013-02-09
- * @version 1.0
+ * @version 1.2
  */
 
-public class JFuel {
+public class JNikeAPI {
 	//access token
 	private String access_token;
 	
@@ -65,7 +65,7 @@ public class JFuel {
 	public final String BASIC_URL = "https://api.nike.com";
 	public final String API_AGGREAGETE = "/me/sport";
 	public final String API_LIST_ACT = "/me/sport/activities";
-	public final String API_ACT_DETAIL = "/me/sport/activities/";//この後ろにIDが入る
+	public final String API_ACT_DETAIL = "/me/sport/activities/";
 	public final String API_ACT_GPS = "/gps";
 	public final String TOKEN = "?access_token=";
 	public final String OPTION_OFFSET = "&offset=";
@@ -78,9 +78,8 @@ public class JFuel {
 	 * 
 	 * @param ACCESS_TOKEN
 	 */
-	public JFuel(final String access_token){
+	public JNikeAPI(final String access_token){
 		this.access_token = access_token;
-		//this.ACCESS_TOKEN = this.TOKEN + ACCESS_TOKEN;
 	}
 	
 	/**
@@ -89,7 +88,7 @@ public class JFuel {
 	 * @param appid
 	 * @param accept
 	 */
-	public JFuel(final String access_token, String appid, String accept){
+	public JNikeAPI(final String access_token, String appid, String accept){
 		this.access_token = access_token;
 		this.appid = appid;
 		this.accept = accept;
@@ -160,7 +159,11 @@ public class JFuel {
 		return jsonStr;
 	}
 	
-	private HttpsURLConnection setHttpHeader() {
+	/**
+	 * 
+	 * @return
+	 */
+	protected HttpsURLConnection setHttpHeader() {
 		return null;
 	}
 
