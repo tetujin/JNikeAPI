@@ -1,4 +1,4 @@
-package jp.ac.keio.sfc.ht.tetujin.nike.api.core;
+package jp.ht.tetujin.nikeapi.core;
 
 import java.io.BufferedReader;
 import java.io.IOException;

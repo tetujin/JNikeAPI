@@ -1,4 +1,4 @@
-package jp.ac.keio.sfc.ht.tetujin.nike.api.core;
+package jp.ht.tetujin.nikeapi.core;
 
 /**
  * The JFuelException is thrown by the JFuel classes when things are amiss.

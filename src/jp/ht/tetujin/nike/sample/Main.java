@@ -1,6 +1,6 @@
-package jp.ac.keio.sfc.ht.tetujin.nike.sample;
+package jp.ht.tetujin.nike.sample;
 
-import jp.ac.keio.sfc.ht.tetujin.nike.api.core.JNikeAPI;
+import jp.ht.tetujin.nikeapi.core.JNikeAPI;
 
 import org.json.JSONArray;
 import org.json.JSONException;
