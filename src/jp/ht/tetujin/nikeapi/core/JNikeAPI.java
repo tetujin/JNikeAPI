@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -39,7 +39,7 @@ SOFTWARE.
  */
 
 /**
- * This code is Nike+ API  
+ * This code is Nike+ API
  * 
  * query sample:
  * 	1) [Aggregate Sport Data]  GET https://api.nike.com/me/sport?access_token={access_token}
@@ -103,20 +103,12 @@ public class JNikeAPI {
 		String jsonStr = "";
 		try {
 			URL url = new URL(strURL);
-			HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
-			//HttpsURLConnection con = setHttpHeader(url);
-			//setting for http header
-			con.setRequestMethod(this.method);
-			con.setDoOutput(true);
-			con.setInstanceFollowRedirects(false);
-			con.setRequestProperty("Accept-Language", this.lang);      
-	        con.setRequestProperty("Accept",this.accept);
-	        con.setRequestProperty("appid",this.appid);
-	        System.out.println("Accept: " + con.getRequestProperty("Accept"));
-	        System.out.println("appid: " + con.getRequestProperty("appid"));
-	        //ヘッダ情報を出力
-	        System.out.println("");
-			System.out.println("---------http header---------- ");
+	        /*---------make and set HTTP header-------*/
+			//HttpsURLConnection baseConnection = (HttpsURLConnection)url.openConnection();
+			HttpsURLConnection con = setHttpHeader((HttpsURLConnection)url.openConnection());
+			
+	        /*---------show HTTP header information-------*/
+			System.out.println("\n ---------http header---------- ");
 	        Map headers =con.getHeaderFields();
 	        for (Object key : headers.keySet()) {
 	            System.out.println(key + ": " + headers.get(key));
@@ -124,10 +116,10 @@ public class JNikeAPI {
 	        con.connect();
 	        
 	        
-	        /*---------body内容の取得---------*/
-	        System.out.println("");
+	        /*---------get HTTP body information---------*/
 			String contentType = con.getHeaderField("Content-Type");
-			String charSet = "Shift-JIS";// "ISO-8859-1";
+			//String charSet = "Shift-JIS";// "ISO-8859-1";
+			String charSet = "UTF-8";// "ISO-8859-1";
 			for (String elm : contentType.replace(" ", "").split(";")) {
 				if (elm.startsWith("charset=")) {
 					charSet = elm.substring(8);
@@ -135,7 +127,7 @@ public class JNikeAPI {
 				}
 			}
 				
-			/*---------body内容の表示----------*/
+			/*---------show HTTP body information----------*/
 			BufferedReader br;
 			try {
 				br = new BufferedReader(new InputStreamReader( con.getInputStream(), charSet));
@@ -143,7 +135,7 @@ public class JNikeAPI {
 				System.out.println(con.getResponseCode() + " " + con.getResponseMessage());
 				br = new BufferedReader( new InputStreamReader(con.getErrorStream(), charSet));
 			}
-			System.out.println("---------body内容の表示----------");
+			System.out.println("\n ---------show HTTP body information----------");
 			String line = "";
 			while ((line = br.readLine()) != null) {
 				jsonStr += line;
@@ -161,10 +153,24 @@ public class JNikeAPI {
 	
 	/**
 	 * 
+	 * @param con
 	 * @return
 	 */
-	protected HttpsURLConnection setHttpHeader() {
-		return null;
+	protected HttpsURLConnection setHttpHeader(HttpsURLConnection con) {
+		try {
+			con.setRequestMethod(this.method);
+			con.setDoOutput(true);
+			con.setInstanceFollowRedirects(false);
+			con.setRequestProperty("Accept-Language", this.lang);      
+	        con.setRequestProperty("Accept",this.accept);
+	        con.setRequestProperty("appid",this.appid);
+	        System.out.println("Accept: " + con.getRequestProperty("Accept"));
+	        System.out.println("appid: " + con.getRequestProperty("appid"));
+	        return con;
+		} catch (ProtocolException e) {
+			e.printStackTrace();
+			return con;
+		}
 	}
 
 	/**
