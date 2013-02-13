@@ -24,10 +24,38 @@ You have to get Access_Token from Nike developer site
 
 How to use
 --------
+<b>First step:</b>
+ The JNikeAPI needs instantiate with your access_token.
+
+    JNikeAPI nike = new JNikeAPI("your access_token");
+
+
+<b>Scond step:</b>
+ You can use the Nike APIs. The Nike APIs has 4 kind of methods. 
+ 1. Aggregate Sport Data
+ 2. List Activities
+ 3. Activity Detail
+ 4. GPS Data
+ 
+If you use this APIs, you can receive data type of [JSONObject](https://github.com/douglascrockford/JSON-java).
+ 
+1) Aggregate Sport Data
+
+    JSONObject values = nike.getAggregateSportData();
+
+2) List Activities.
+    
+    JSONObject value = nike.getListActivities();
+
+3) Activity Detail
+    
+    JSONObject value = nike.getActivityDetail("activityID");
+    
+4) GPS Data
+    
+    JSONObject value = nike.getGPSData("activityID");
 
 
 Futer work
 --------
-
-
 
