@@ -20,12 +20,12 @@ import org.json.JSONObject;
 public class Main{
 
 	public static void main(String[] args) throws JSONException{
-		JNikeAPI nike = new JNikeAPI("26bdceba6b0851bfafb467da4efffba0");
+		JNikeAPI nike = new JNikeAPI("your_access_token");
 		JSONObject result = nike.getAggregateSportData();
 //		JSONObject result = nike.getListActivites();
 //		JSONObject result = nike.getListActivites(0,0,"2012-12-03","2012-12-04");
-//		JSONObject result = nike.getActivityDetail("caf41be4-b92e-4655-a5e1-0c6d2464cfdb");
-//		JSONObject result = nike.getGPSData("caf41be4-b92e-4655-a5e1-0c6d2464cfdb");
+//		JSONObject result = nike.getActivityDetail("activeID");
+//		JSONObject result = nike.getGPSData("ActiveID");
 		
 		//Json形式データの表示
 		System.out.println("\n--------JSON---------------");
