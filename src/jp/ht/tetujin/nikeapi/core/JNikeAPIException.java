@@ -5,18 +5,18 @@ package jp.ht.tetujin.nikeapi.core;
  * @author tetujin
  * @version 2013-02-09
  */
-public class JFuelException extends Exception{
+public class JNikeAPIException extends Exception{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4638914920328046850L;
 	private Throwable cause;
 	
-	public JFuelException(String message){
+	public JNikeAPIException(String message){
 		super(message);
 	}
 	
-	public JFuelException(Throwable cause){
+	public JNikeAPIException(Throwable cause){
 		super(cause.getMessage());
 		this.cause = cause;
 	}

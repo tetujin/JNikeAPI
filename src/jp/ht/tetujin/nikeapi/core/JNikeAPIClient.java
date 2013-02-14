@@ -13,6 +13,7 @@ import javax.net.ssl.HttpsURLConnection;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 /*
 Copyright (c) 2013 tetujin
 
@@ -56,7 +57,7 @@ SOFTWARE.
  * @version 1.2
  */
 
-public class JNikeAPI {
+public class JNikeAPIClient {
 	//access token
 	private String access_token;
 	
@@ -80,20 +81,19 @@ public class JNikeAPI {
 	
 	
 	/**
-	 * 
-	 * @param ACCESS_TOKEN
+	 * @param access_token <a href="http://developer.nike.com/">Nike Developer Site</a> より取得したアクセストークン
 	 */
-	public JNikeAPI(final String access_token){
+	public JNikeAPIClient(final String access_token){
 		this.access_token = access_token;
 	}
 	
 	/**
 	 * 
-	 * @param ACCESS_TOKEN
-	 * @param appid
-	 * @param accept
+	 * @param access_token <a href="http://developer.nike.com/">Nike+ Developer Site</a> より取得したアクセストークン
+	 * @param appid Http Headerへ挿入する Request Headers(<a href="http://developer.nike.com/">Nike Developer Site</a>を参照)
+	 * @param accept Http Headerへ挿入する Request Headers (<a href="http://developer.nike.com/">Nike Developer Site</a>を参照)
 	 */
-	public JNikeAPI(final String access_token, String appid, String accept){
+	public JNikeAPIClient(final String access_token, String appid, String accept){
 		this.access_token = access_token;
 		this.appid = appid;
 		this.accept = accept;
@@ -101,8 +101,8 @@ public class JNikeAPI {
 	
 	/**
 	 * 
-	 * @param strURL
-	 * @return
+	 * @param strURL リクエスト用のURL
+	 * @return jsonStr JSON形式の文字列
 	 */
 	protected String sendHttpRequest(final String strURL){
 		String jsonStr = "";
@@ -158,8 +158,8 @@ public class JNikeAPI {
 	
 	/**
 	 * 
-	 * @param con
-	 * @return
+	 * @param con ベーシックなHttpsURLConnection 
+	 * @return con optionを追加したHttpsURLConnection
 	 */
 	protected HttpsURLConnection setHttpHeader(HttpsURLConnection con) {
 		try {
@@ -179,8 +179,8 @@ public class JNikeAPI {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * API: The method of Aggregate Sport Data
+	 * @return A JSONObject
 	 */
 	public JSONObject getAggregateSportData(){
 		String url = this.BASIC_URL + this.API_AGGREAGETE + TOKEN + this.access_token; 
@@ -191,41 +191,41 @@ public class JNikeAPI {
 	
 	
 	/**
-	 * 
-	 * @return
+	 * API: The method of List Activities
+	 * @return A JSONObject
 	 */
-	public JSONObject getListActivites(){
-		return getListActivites(0, 0, null, null);
+	public JSONObject getListActivities(){
+		return getListActivities(0, 0, null, null);
 	}
 	
 	/**
-	 * 
+	 * API: The method of List Activities with limit of count option
 	 * @param count
-	 * @return
+	 * @return A JSONObject
 	 */
-	public JSONObject getListActivites(int count){
-		return getListActivites(0, count, null, null);
+	public JSONObject getListActivities(int count){
+		return getListActivities(0, count, null, null);
 	}
 
 	/**
-	 * 
+	 * API: The method of List Activities with option of start date and end date. 
 	 * @param start
 	 * @param end
-	 * @return
+	 * @return A JSONObject
 	 */
-	public JSONObject getListActivites(String start, String end){
-		return getListActivites(0,0, start, end);
+	public JSONObject getListActivities(String start, String end){
+		return getListActivities(0,0, start, end);
 	}
 	
 	/**
-	 * 
+	 * API: The method of List activities with option of start date & end date and limit of count
 	 * @param offset
 	 * @param count
 	 * @param start
 	 * @param end
-	 * @return
+	 * @return A JSONObject
 	 */
-	public JSONObject getListActivites(int offset, int count, String start, String end){
+	public JSONObject getListActivities(int offset, int count, String start, String end){
 		String url = this.BASIC_URL + this.API_LIST_ACT + this.TOKEN + this.access_token;
 		if(count!= 0) 	url += this.OPTION_COUNT  + count;
 		if(offset != 0) url += this.OPTION_OFFSET + offset;
@@ -246,9 +246,9 @@ public class JNikeAPI {
 	 */
 	
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 * API: The method of Activity Detail. This method need activity id from List Activities.
+	 * @param activityId
+	 * @return A JSONObject
 	 */
 	public JSONObject getActivityDetail(final String activityId){
 		//GET https://api.nike.com/me/sport/activities/104019031?access_token={access_token}
@@ -258,9 +258,9 @@ public class JNikeAPI {
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 *  API: The method of GPS data. This method need activity id from List Activities.
+	 * @param activityId 
+	 * @return A JSONObject
 	 */
 	public JSONObject getGPSData(final String activityId){
 	    //GET https://api.nike.com/me/sport/activities/104019031/gps?access_token={access_token}
@@ -271,7 +271,7 @@ public class JNikeAPI {
 	
 	/**
 	 * 
-	 * @return
+	 * @return The registered access token
 	 */
 	public String getAccessToken(){
 		return this.access_token;
@@ -279,7 +279,7 @@ public class JNikeAPI {
 	
 	/**
 	 * 
-	 * @return
+	 * @return　The registered language in http header
 	 */
 	public String getLang(){
 		return this.lang; 
@@ -287,7 +287,7 @@ public class JNikeAPI {
 	
 	/**
 	 * 
-	 * @return
+	 * @return The registered appID in http header
 	 */
 	public String getAppId(){
 		return this.appid;
@@ -295,7 +295,7 @@ public class JNikeAPI {
 	
 	/**
 	 * 
-	 * @return
+	 * @return The registered accept in http header
 	 */
 	public String getAccept(){
 		return this.accept; 
@@ -303,7 +303,7 @@ public class JNikeAPI {
 	
 	/**
 	 * 
-	 * @param access_token
+	 * @param access_token 
 	 */
 	public void setAccessToken(final String access_token){
 		this.access_token = access_token;
@@ -336,7 +336,7 @@ public class JNikeAPI {
 	/**
 	 * 
 	 * @param method
-	 * @return
+	 * @return correct format or illegal format
 	 */
 	public boolean setMethod(final String method){
 		if(method.equals("GET") || method.equals("POST")){
@@ -350,15 +350,16 @@ public class JNikeAPI {
 	
 	/**
 	 * 
+	 * @return A message about access token
 	 */
 	public String toString(){
 		return "Accesstoken is " + this.access_token;
 	}
 	
 	/**
-	 * 
-	 * @param jsonStr
-	 * @return
+	 * JSON形式の文字列をJSONObjectに変換するメソッド
+	 * @param jsonStr 
+	 * @return A JSONObject
 	 */
 	protected JSONObject getJsonObj(String jsonStr) {
 		try {
@@ -374,7 +375,7 @@ public class JNikeAPI {
 	/**
 	 * 
 	 * @param dateStr
-	 * @return
+	 * @return　correct format or illegal format
 	 */
 	protected boolean dateformatChecker(String dateStr){
 		if(dateStr.charAt(4)!='-' || dateStr.charAt(7)!='-'){

@@ -1,10 +1,10 @@
 package jp.ht.tetujin.nikeapi.sample;
 
-import jp.ht.tetujin.nikeapi.core.JNikeAPI;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import jp.ht.tetujin.nikeapi.core.JNikeAPIClient;
 
 /*
  * JFuelのサンプルプログラム
@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class Main{
 
 	public static void main(String[] args) throws JSONException{
-		JNikeAPI nike = new JNikeAPI("your_access_token");
+		JNikeAPIClient nike = new JNikeAPIClient("3f19b66c677334c1b79e792996db0c3a");
 		JSONObject result = nike.getAggregateSportData();
 //		JSONObject result = nike.getListActivites();
 //		JSONObject result = nike.getListActivites(0,0,"2012-12-03","2012-12-04");

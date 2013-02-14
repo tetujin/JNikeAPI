@@ -9,6 +9,13 @@ case of using this code in Eclipse:
 1. download this code
 2. start the Eclipse and import this code ("file"->"import"->select this folder)
 
+case of using jar file:
+
+1. download jar files. 
+* <a href="http://www.ht.sfc.keio.ac.jp/~tetujin/jar/JNikeAPIClient.jar">JNikeAPIClient.jar</a>
+* <a="href="http://www.ht.sfc.keio.ac.jp/~tetujin/jar/JSON.jar">JSON.jar</a>
+
+2. setting class pass
 
 Preparation
 --------
