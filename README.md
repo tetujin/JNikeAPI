@@ -31,6 +31,9 @@ You have to get Access_Token from Nike developer site
 
 How to use
 --------
+[javadoc](http://www.ht.sfc.keio.ac.jp/~tetujin/javadoc/JNikeAPI/)
+<br>
+
 <b>First step:</b>
  The JNikeAPI needs instantiate with your access_token.
 
