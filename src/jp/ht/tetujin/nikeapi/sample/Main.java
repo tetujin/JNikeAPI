@@ -24,8 +24,8 @@ public class Main{
 		JSONObject result = nike.getAggregateSportData();
 //		JSONObject result = nike.getListActivites();
 //		JSONObject result = nike.getListActivites(0,0,"2012-12-03","2012-12-04");
-//		JSONObject result = nike.getActivityDetail("activeID");
-//		JSONObject result = nike.getGPSData("ActiveID");
+//		JSONObject result = nike.getActivityDetail("activity_id");
+//		JSONObject result = nike.getGPSData("activity_id");
 		
 		//Json形式データの表示
 		System.out.println("\n--------JSON---------------");

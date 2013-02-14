@@ -39,13 +39,18 @@ SOFTWARE.
  */
 
 /**
- * This code is Nike+ API
+ * This code is java client of Nike+ API. 
  * 
- * query sample:
- * 	1) [Aggregate Sport Data]  GET https://api.nike.com/me/sport?access_token={access_token}
- *  2) [List Activities]  GET https://api.nike.com/me/sport/activities?access_token={access_token}
- * 	3) [Activity Detail]  GET https://api.nike.com/me/sport/activities/104019031?access_token={access_token}
- *  4) [GPS Data]  GET https://api.nike.com/me/sport/activities/104019031/gps?access_token={access_token}
+ * Nike+ API is used HTTP GET method and it have 4 methods.
+ * 
+ * 
+ * <ul>
+ * 	<li>1) [Aggregate Sport Data]  GET https://api.nike.com/me/sport?access_token={access_token}</li>
+ *  <li>2) [List Activities]  GET https://api.nike.com/me/sport/activities?access_token={access_token}</li>
+ * 	<li>3) [Activity Detail]  GET https://api.nike.com/me/sport/activities/104019031?access_token={access_token}</li>
+ *  <li>4) [GPS Data]  GET https://api.nike.com/me/sport/activities/104019031/gps?access_token={access_token}</li>
+ * </ul>
+ * 
  * @author tetujin
  * @since 2013-02-09
  * @version 1.2
