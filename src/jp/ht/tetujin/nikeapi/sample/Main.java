@@ -4,7 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import jp.ht.tetujin.nikeapi.core.JNikeAPIClient;
+import jp.ht.tetujin.nikeapi.core.JNikeAPIConnecter;
+import jp.ht.tetujin.nikeapi.core.object.ActivityObjectList;
+import jp.ht.tetujin.nikeapi.core.object.AggregateSportDataObject;
 
 /*
  * JFuelのサンプルプログラム
@@ -20,22 +22,29 @@ import jp.ht.tetujin.nikeapi.core.JNikeAPIClient;
 public class Main{
 
 	public static void main(String[] args) throws JSONException{
-		JNikeAPIClient nike = new JNikeAPIClient("3f19b66c677334c1b79e792996db0c3a");
-		JSONObject result = nike.getAggregateSportData();
-//		JSONObject result = nike.getListActivites();
+		JNikeAPIConnecter nike = new JNikeAPIConnecter("3f19b66c677334c1b79e792996db0c3a");
+//		JSONObject result = nike.getAggregateSportData();
+//		JSONObject result = nike.getListActivities(10);
 //		JSONObject result = nike.getListActivites(0,0,"2012-12-03","2012-12-04");
-//		JSONObject result = nike.getActivityDetail("activity_id");
+		JSONObject result = nike.getActivityDetail("3d155e19-9ee9-4fd0-b569-e8c0864eee6e");
 //		JSONObject result = nike.getGPSData("activity_id");
 		
 		//Json形式データの表示
 		System.out.println("\n--------JSON---------------");
-		try {
-			JSONArray names = result.names();
-			for(int i=0; i<result.length(); i++){
-				System.out.println(result.get((String)names.get(i)));
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		//System.out.println(result.toString(4));
+		System.out.println(result.names().toString(6));
+//		System.out.println(result.getJSONArray("metrics").getJSONObject(0).getJSONArray("values").toString(4));
+//		System.out.println(result.getJSONArray("metrics").getJSONObject(0).names().toString(4));
+		//System.out.println(result.getJSONArray("metrics").getJSONObject(1).getJSONArray("values").length());
+		//AggregateSportDataObject data = new AggregateSportDataObject(result);
+//		 ActivityObjectList data = new ActivityObjectList(result);
+//		try {
+//			JSONArray names = result.names();
+//			for(int i=0; i<result.length(); i++){
+//				System.out.println(result.get((String)names.get(i)));
+//			}
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
 	}
 }
