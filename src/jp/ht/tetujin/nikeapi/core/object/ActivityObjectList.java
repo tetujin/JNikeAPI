@@ -62,13 +62,12 @@ public class ActivityObjectList extends List{
 				int tagsSize = tags.length();
 				TagsModel[] tagsmodel = new TagsModel[tagsSize];
 				for(int j=0; j<tagsSize; j++){
-					JSONObject tagObj = tags.getJSONObject(0);
-					TagsModel tag = new TagsModel(tagObj);
-					tagsmodel[j] = tag;
+					JSONObject tagObj = tags.getJSONObject(j);
+					tagsmodel[j]= new TagsModel(tagObj);
+					//tagsmodel[j] = tag;
 				}
-				//TODO metricsの分解
 				
-				ActivityObject act = new ActivityObject(obj.getString(this.ACTIVITY_ID),
+				this.activityObjectList[i] = new ActivityObject(obj.getString(this.ACTIVITY_ID),
 														obj.getInt(this.CALORIES),
 														obj.getInt(this.FUEL),
 														obj.getDouble(this.DISTANCE),
@@ -81,7 +80,7 @@ public class ActivityObjectList extends List{
 														obj.getString(this.DEVICE_TYPE),
 														tagsmodel, 
 														new String[3]);
-				this.activityObjectList[i] = act;
+				//this.activityObjectList[i] = act;
 			}			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
