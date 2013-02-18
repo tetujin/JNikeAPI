@@ -8,7 +8,7 @@ import jp.ht.tetujin.nikeapi.core.JNikeAPIConnecter;
 import jp.ht.tetujin.nikeapi.core.object.ActivityObjectList;
 import jp.ht.tetujin.nikeapi.core.object.AggregateSportDataObject;
 import jp.ht.tetujin.nikeapi.core.object.DetailActivityObject;
-import jp.ht.tetujin.nikeapi.core.object.elements.MetricsModel;
+import jp.ht.tetujin.nikeapi.core.object.elements.MetricsObject;
 
 /*
  * JFuelのサンプルプログラム
@@ -25,8 +25,14 @@ public class Main{
 
 	public static void main(String[] args) throws JSONException{
 		JNikeAPIConnecter nike = new JNikeAPIConnecter("3f19b66c677334c1b79e792996db0c3a");
-//		JSONObject result = nike.getAggregateSportData();
-		JSONObject result = nike.getListActivities(10);
+		JSONObject result = nike.getAggregateSportData();
+		AggregateSportDataObject agg = new AggregateSportDataObject(result);
+		agg.getExperienceTypeList();
+		agg.getExperienceTypeSize();
+		agg.getAllSummaries();
+		agg.getFuelSummaries();
+		agg.getRunningSummaries();
+//		JSONObject result = nike.getListActivities(10);
 //		System.out.println(result.toString(5));
 //		JSONObject result = nike.getListActivites(0,0,"2012-12-03","2012-12-04");
 //		JSONObject result = nike.getActivityDetail("3d155e19-9ee9-4fd0-b569-e8c0864eee6e");

@@ -1,7 +1,7 @@
 package jp.ht.tetujin.nikeapi.core.object;
 
-import jp.ht.tetujin.nikeapi.core.object.elements.MetricsModel;
-import jp.ht.tetujin.nikeapi.core.object.elements.TagsModel;
+import jp.ht.tetujin.nikeapi.core.object.elements.MetricsObject;
+import jp.ht.tetujin.nikeapi.core.object.elements.TagsObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,8 +27,8 @@ public class DetailActivityObject {
     private String startTime;
     private String activityTimeZone;
     private String activityType;    
-    private MetricsModel[] metrics;
-    private TagsModel[] tags;
+    private MetricsObject[] metrics;
+    private TagsObject[] tags;
     
     public KeyNames key;
     
@@ -50,18 +50,18 @@ public class DetailActivityObject {
 			if (!json.isNull(key.METRICS)){
 				JSONArray array = json.getJSONArray(key.METRICS);
 				int size = array.length();
-				this.metrics = new MetricsModel[size];
+				this.metrics = new MetricsObject[size];
 				for(int i=0; i<size; i++){
-					this.metrics[0] = new MetricsModel(array.getJSONObject(i));
+					this.metrics[0] = new MetricsObject(array.getJSONObject(i));
 				}
 			}
 			//tags
 			if (!json.isNull(key.TAGS)){
 				JSONArray array = json.getJSONArray(key.TAGS);
 				int size = array.length();
-				this.tags = new TagsModel[size];
+				this.tags = new TagsObject[size];
 				for(int i=0; i<size; i++){
-					this.tags[0] = new TagsModel(array.getJSONObject(i));
+					this.tags[0] = new TagsObject(array.getJSONObject(i));
 				}
 			}
 		} catch (JSONException e) {
@@ -70,7 +70,7 @@ public class DetailActivityObject {
 
 	}
 
-    public TagsModel[] getTags(){return this.tags;}
+    public TagsObject[] getTags(){return this.tags;}
     public String 	   getStatus(){return this.status;}
     public int 		   getSteps(){return this.steps; }
     public String 	   getActivityId(){return this.activityId; }
@@ -78,7 +78,7 @@ public class DetailActivityObject {
     public String 	   getActivityTimeZone(){return this.activityTimeZone; }
     public double 	   getDistance(){return this.distance; }
     public String 	   getDuration(){return this.duration; }
-    public MetricsModel[] getMetrics(){return this.metrics; }
+    public MetricsObject[] getMetrics(){return this.metrics; }
     public String 	   getDeviceType(){return this.deviceType; }
     public int 		   getCalories(){return this.calories;}
     public int 		   getFuel(){return this.fuel;}
