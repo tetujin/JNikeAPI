@@ -33,23 +33,13 @@ public class ActivityObjectList extends List{
 	private static final long serialVersionUID = 1L;
 	
 	//public final String[] activityElements = { "activityId", "calories", "fuel", "distance", "steps", "duration", "activityType", "startTime", "activityTimeZone", "status", "deviceType", "tags", "streams"};
-	public final String STATUS = "status";
-    public final String STEPS = "steps";
-    public final String ACTIVITY_ID = "activityId";
-    public final String START_TIME = "startTime";
-    public final String ACTIVITY_TIME_ZONE = "activityTimeZone";
-    public final String DISTANCE = "distance";
-    public final String DURATION = "duration";
-    public final String METRICS= "metrics";
-    public final String DEVICE_TYPE = "deviceType";
-    public final String CALORIES = "calories";
-    public final String FUEL= "fuel";
-    public final String ACTIVITY_TYPE = "activityType";
-    public final String TAGS = "tags";
-	
+
 	public ActivityObject[] activityObjectList;
 	
+	public KeyNames key;
+	
 	public ActivityObjectList(JSONObject json){
+		this.key = new KeyNames();
 		try {
 			JSONArray data = json.getJSONArray("data");
 			int size = data.length();
@@ -57,29 +47,30 @@ public class ActivityObjectList extends List{
 			for(int i=0; i<size; i++){
 				JSONObject obj = data.getJSONObject(i);
 				
-				//Tagの分解
-				JSONArray tags = obj.getJSONArray(this.TAGS);
-				int tagsSize = tags.length();
-				TagsModel[] tagsmodel = new TagsModel[tagsSize];
-				for(int j=0; j<tagsSize; j++){
-					JSONObject tagObj = tags.getJSONObject(j);
-					tagsmodel[j]= new TagsModel(tagObj);
-					//tagsmodel[j] = tag;
-				}
+//				//Tagの分解
+//				JSONArray tags = obj.getJSONArray(this.key.TAGS);
+//				int tagsSize = tags.length();
+//				TagsModel[] tagsmodel = new TagsModel[tagsSize];
+//				for(int j=0; j<tagsSize; j++){
+//					JSONObject tagObj = tags.getJSONObject(j);
+//					tagsmodel[j]= new TagsModel(tagObj);
+//					//tagsmodel[j] = tag;
+//				}
 				
-				this.activityObjectList[i] = new ActivityObject(obj.getString(this.ACTIVITY_ID),
-														obj.getInt(this.CALORIES),
-														obj.getInt(this.FUEL),
-														obj.getDouble(this.DISTANCE),
-														obj.getInt(this.STEPS),
-														obj.getString(this.DURATION),
-														obj.getString(this.ACTIVITY_TYPE),
-														obj.getString(this.START_TIME),
-														obj.getString(this.ACTIVITY_TIME_ZONE),
-														obj.getString(this.STATUS),
-														obj.getString(this.DEVICE_TYPE),
-														tagsmodel, 
-														new String[3]);
+//				this.activityObjectList[i] = new ActivityObject(obj.getString(this.key.ACTIVITY_ID),
+//														obj.getInt(this.key.CALORIES),
+//														obj.getInt(this.key.FUEL),
+//														obj.getDouble(this.key.DISTANCE),
+//														obj.getInt(this.key.STEPS),
+//														obj.getString(this.key.DURATION),
+//														obj.getString(this.key.ACTIVITY_TYPE),
+//														obj.getString(this.key.START_TIME),
+//														obj.getString(this.key.ACTIVITY_TIME_ZONE),
+//														obj.getString(this.key.STATUS),
+//														obj.getString(this.key.DEVICE_TYPE),
+//														tagsmodel, 
+//														new String[3]);
+				this.activityObjectList[i] = new ActivityObject(obj);
 				//this.activityObjectList[i] = act;
 			}			
 		} catch (JSONException e) {
@@ -101,5 +92,22 @@ public class ActivityObjectList extends List{
     public String getDeviceType(int index){return this.activityObjectList[index].deviceType;}
     public TagsModel[] getTags(int index){return this.activityObjectList[index].tags;}
     public String[] getMetrics(int index){return this.activityObjectList[index].metrics;}
+    
+    
+    protected class KeyNames{
+    	public final String STATUS = "status";
+        public final String STEPS = "steps";
+        public final String ACTIVITY_ID = "activityId";
+        public final String START_TIME = "startTime";
+        public final String ACTIVITY_TIME_ZONE = "activityTimeZone";
+        public final String DISTANCE = "distance";
+        public final String DURATION = "duration";
+        public final String METRICS= "metrics";
+        public final String DEVICE_TYPE = "deviceType";
+        public final String CALORIES = "calories";
+        public final String FUEL= "fuel";
+        public final String ACTIVITY_TYPE = "activityType";
+        public final String TAGS = "tags";
+    }
 }
 

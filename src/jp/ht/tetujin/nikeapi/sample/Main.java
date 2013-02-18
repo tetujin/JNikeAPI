@@ -26,18 +26,18 @@ public class Main{
 	public static void main(String[] args) throws JSONException{
 		JNikeAPIConnecter nike = new JNikeAPIConnecter("3f19b66c677334c1b79e792996db0c3a");
 //		JSONObject result = nike.getAggregateSportData();
-//		JSONObject result = nike.getListActivities(10);
+		JSONObject result = nike.getListActivities(10);
 //		System.out.println(result.toString(5));
 //		JSONObject result = nike.getListActivites(0,0,"2012-12-03","2012-12-04");
 //		JSONObject result = nike.getActivityDetail("3d155e19-9ee9-4fd0-b569-e8c0864eee6e");
-		JSONObject result = nike.getActivityDetail("2103207964");
+//		JSONObject result = nike.getActivityDetail("2103207964");
 //		JSONObject result = nike.getGPSData("activity_id");
 
 		
-		DetailActivityObject obj = new DetailActivityObject(result);
-		System.out.println(result.toString(5));
-		//Json形式データの表示
-		System.out.println("\n--------JSON---------------");
+//		DetailActivityObject obj = new DetailActivityObject(result);
+//		System.out.println(result.toString(5));
+//		//Json形式データの表示
+//		System.out.println("\n--------JSON---------------");
 //		MetricsModel[] a = obj.getMetrics();
 //		double[] values = a[0].getValues();
 //		int size = values.length;

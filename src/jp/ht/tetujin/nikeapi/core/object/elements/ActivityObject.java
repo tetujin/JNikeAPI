@@ -1,5 +1,9 @@
 package jp.ht.tetujin.nikeapi.core.object.elements;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 
 /**
@@ -25,31 +29,85 @@ public class ActivityObject {
     public TagsModel[] tags;
     public String[] metrics;
     
-	public ActivityObject(String activityId,
-							  int calories,
-							  int fuel,
-							  double distance,
-							  int steps,
-							  String duration,
-							  String activityType,
-							  String startTime,
-							  String activityTimeZone,
-							  String status,
-							  String deviceType,
-							  TagsModel[] tags,
-							  String[] metrics){
-		this.activityId = activityId;
-	    this.calories = calories;
-	    this.fuel = fuel;
-	    this.distance = distance;
-	    this.steps = steps;
-	    this.duration = duration;
-	    this.activityType = activityType;
-	    this.startTime = startTime;
-	    this.activityTimeZone = activityTimeZone;
-	    this.status = status;
-	    this.deviceType = deviceType;
-	    this.tags = tags;
-	    this.metrics = metrics;
+    public KeyNames key;
+    
+//	public ActivityObject(String activityId,
+//							  int calories,
+//							  int fuel,
+//							  double distance,
+//							  int steps,
+//							  String duration,
+//							  String activityType,
+//							  String startTime,
+//							  String activityTimeZone,
+//							  String status,
+//							  String deviceType,
+//							  TagsModel[] tags,
+//							  String[] metrics){
+//		this.activityId = activityId;
+//	    this.calories = calories;
+//	    this.fuel = fuel;
+//	    this.distance = distance;
+//	    this.steps = steps;
+//	    this.duration = duration;
+//	    this.activityType = activityType;
+//	    this.startTime = startTime;
+//	    this.activityTimeZone = activityTimeZone;
+//	    this.status = status;
+//	    this.deviceType = deviceType;
+//	    this.tags = tags;
+//	    this.metrics = metrics;
+//	}
+	
+	
+    public ActivityObject(JSONObject obj) {
+    	this.key = new KeyNames();
+		try {
+		//Tagの分解
+			JSONArray tags = obj.getJSONArray(this.key.TAGS);
+			int tagsSize = tags.length();
+			TagsModel[] tagsmodel = new TagsModel[tagsSize];
+			for(int j=0; j<tagsSize; j++){
+				JSONObject tagObj = tags.getJSONObject(j);
+				tagsmodel[j]= new TagsModel(tagObj);
+			}
+			
+			
+			this.activityId = obj.getString(this.key.ACTIVITY_ID);
+			this.calories = obj.getInt(this.key.CALORIES);
+			this.fuel = obj.getInt(this.key.FUEL);
+			this.distance = obj.getDouble(this.key.DISTANCE);
+			this.steps = obj.getInt(this.key.STEPS);
+			this.duration = obj.getString(this.key.DURATION);
+			this.activityType = obj.getString(this.key.ACTIVITY_TYPE);
+			this.startTime = obj.getString(this.key.START_TIME);
+			this.activityTimeZone = obj.getString(this.key.ACTIVITY_TIME_ZONE);
+			this.status = obj.getString(this.key.STATUS);
+			this.deviceType = obj.getString(this.key.DEVICE_TYPE);
+			this.tags = tagsmodel;
+			this.metrics = new String[3];
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
+
+
+	protected class KeyNames{
+    	public final String STATUS = "status";
+        public final String STEPS = "steps";
+        public final String ACTIVITY_ID = "activityId";
+        public final String START_TIME = "startTime";
+        public final String ACTIVITY_TIME_ZONE = "activityTimeZone";
+        public final String DISTANCE = "distance";
+        public final String DURATION = "duration";
+        public final String METRICS= "metrics";
+        public final String DEVICE_TYPE = "deviceType";
+        public final String CALORIES = "calories";
+        public final String FUEL= "fuel";
+        public final String ACTIVITY_TYPE = "activityType";
+        public final String TAGS = "tags";
+    }
 }

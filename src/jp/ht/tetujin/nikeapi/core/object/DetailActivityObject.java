@@ -7,6 +7,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * 
+ * @author tetujin
+ * @version 1.0
+ * @since 2013-02-18
+ */
+
 public class DetailActivityObject {
 	
     private double distance;
