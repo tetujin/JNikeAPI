@@ -12,7 +12,7 @@ case of using this code in Eclipse:
 case of using jar file:
 
 1. download jar files. 
- - <a href="./lib">JNikeAPIClient.jar</a> 
+ - <a href="./lib">JNikeAPI.jar</a> 
  - <a href="./lib">JSON.jar</a>. (This jar file made by this <a href="http://www.json.org/java/">site</a>)
 2. setting class pass
 
