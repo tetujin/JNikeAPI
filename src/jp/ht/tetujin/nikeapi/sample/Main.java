@@ -1,15 +1,10 @@
 package jp.ht.tetujin.nikeapi.sample;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
+import jp.ht.tetujin.nikeapi.core.JNikeAPIClient;
 import jp.ht.tetujin.nikeapi.core.JNikeAPIConnecter;
-import jp.ht.tetujin.nikeapi.core.object.ActivityObjectList;
-import jp.ht.tetujin.nikeapi.core.object.AggregateSportDataObject;
-import jp.ht.tetujin.nikeapi.core.object.DetailActivityObject;
-import jp.ht.tetujin.nikeapi.core.object.elements.MetricsObject;
-
+import jp.ht.tetujin.nikeapi.object.ListActivitiesObject;
 /*
  * JFuelのサンプルプログラム
  * 	1) JFuelをインスタンス化．引数としてNike+ API(https://developer.nike.com/)より発行されるaccess_tokenを渡す．
@@ -22,48 +17,11 @@ import jp.ht.tetujin.nikeapi.core.object.elements.MetricsObject;
  */
 
 public class Main{
-
 	public static void main(String[] args) throws JSONException{
-		JNikeAPIConnecter nike = new JNikeAPIConnecter("3f19b66c677334c1b79e792996db0c3a");
-		JSONObject result = nike.getAggregateSportData();
-		AggregateSportDataObject agg = new AggregateSportDataObject(result);
-		agg.getExperienceTypeList();
-		agg.getExperienceTypeSize();
-		agg.getAllSummaries();
-		agg.getFuelSummaries();
-		agg.getRunningSummaries();
-//		JSONObject result = nike.getListActivities(10);
-//		System.out.println(result.toString(5));
-//		JSONObject result = nike.getListActivites(0,0,"2012-12-03","2012-12-04");
-//		JSONObject result = nike.getActivityDetail("3d155e19-9ee9-4fd0-b569-e8c0864eee6e");
-//		JSONObject result = nike.getActivityDetail("2103207964");
-//		JSONObject result = nike.getGPSData("activity_id");
-
+		//JNikeAPIConnecter nike = new JNikeAPIConnecter("3f19b66c677334c1b79e792996db0c3a");
 		
-//		DetailActivityObject obj = new DetailActivityObject(result);
-//		System.out.println(result.toString(5));
-//		//Json形式データの表示
-//		System.out.println("\n--------JSON---------------");
-//		MetricsModel[] a = obj.getMetrics();
-//		double[] values = a[0].getValues();
-//		int size = values.length;
-//		for(int i=0; i<size; i++){
-//			System.out.println(values[i]);
-//		}
-		//System.out.println(result.toString(4));
-		//System.out.println(result.names().toString(6));
-		//System.out.println(result.getJSONArray("metrics").getJSONObject(0).getJSONArray("values").toString(4));
-		//System.out.println(result.getJSONArray("metrics").getJSONObject(0).names().toString(4));
-		//System.out.println(result.getJSONArray("metrics").getJSONObject(1).getJSONArray("values").length());
-		//AggregateSportDataObject data = new AggregateSportDataObject(result);
-//		 ActivityObjectList data = new ActivityObjectList(result);
-//		try {
-//			JSONArray names = result.names();
-//			for(int i=0; i<result.length(); i++){
-//				System.out.println(result.get((String)names.get(i)));
-//			}
-//		} catch (JSONException e) {
-//			e.printStackTrace();
-//		}
+		JNikeAPIClient client = new JNikeAPIClient("3f19b66c677334c1b79e792996db0c3a");
+		 client.getAggregateSportDataObject();
+		//a.getActivityObject(i);
 	}
 }

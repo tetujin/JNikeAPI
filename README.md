@@ -12,7 +12,7 @@ case of using this code in Eclipse:
 case of using jar file:
 
 1. download jar files. 
- - <a href="http://www.ht.sfc.keio.ac.jp/~tetujin/jar/JNikeAPIClient.jar">JNikeAPIClient.jar</a> 
+ - <a href="./lib">JNikeAPIClient.jar</a> 
  - <a href="./lib">JSON.jar</a>. (This jar file made by this <a href="http://www.json.org/java/">site</a>)
 2. setting class pass
 
@@ -36,7 +36,7 @@ How to use
 <b>First step:</b>
  The JNikeAPIClient needs instantiate with your access_token.
 
-    JNikeAPIClient nike = new JNikeAPIClient("your access_token");
+    JNikeAPIClient nikeApi = new JNikeAPIClient("your access_token");
 
 
 <b>Scond step:</b>
@@ -50,21 +50,19 @@ If you use this APIs, you can receive data type of [JSONObject](https://github.c
  
 1) Aggregate Sport Data
 
-    JSONObject values = nike.getAggregateSportData();
+    AggregateSportDataObject values = nikeApi.getAggregateSportDataObject();
 
 2) List Activities.
     
-    JSONObject value = nike.getListActivities();
+    ListActivitiesObject value = nikeApi.getListActivitiesObject();
 
 3) Activity Detail
     
-    JSONObject value = nike.getActivityDetail("activityID");
+    DetailActivityObject value = nikeApi.getDetailActivityObject("activityID");
     
 4) GPS Data
     
-    JSONObject value = nike.getGPSData("activityID");
+    GPSDataObject value = nikeApi.getGPSDataObject("activityID");
 
 
-Futer work
---------
 

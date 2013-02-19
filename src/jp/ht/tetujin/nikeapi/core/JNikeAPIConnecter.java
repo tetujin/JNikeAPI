@@ -264,7 +264,8 @@ public class JNikeAPIConnecter {
 	 */
 	public JSONObject getGPSData(final String activityId){
 	    //GET https://api.nike.com/me/sport/activities/104019031/gps?access_token={access_token}
-		String url = this.BASIC_URL + this.API_ACT_GPS + activityId + this.API_ACT_GPS + this.TOKEN +this.access_token;
+		String url = this.BASIC_URL + this.API_ACT_DETAIL + activityId + this.API_ACT_GPS + this.TOKEN +this.access_token;
+		
 		String jsonStr = sendHttpRequest(url);
 		return getJsonObj(jsonStr);
 	}
