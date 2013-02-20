@@ -3,7 +3,7 @@ package jp.ht.tetujin.nikeapi.sample;
 import org.json.JSONException;
 
 import jp.ht.tetujin.nikeapi.core.JNikeAPIClient;
-import jp.ht.tetujin.nikeapi.core.JNikeAPIConnecter;
+import jp.ht.tetujin.nikeapi.core.JNikeLowLevelAPI;
 import jp.ht.tetujin.nikeapi.object.ListActivitiesObject;
 /*
  * JFuelのサンプルプログラム
@@ -17,9 +17,7 @@ import jp.ht.tetujin.nikeapi.object.ListActivitiesObject;
 
 public class Main{
 	public static void main(String[] args) throws JSONException{
-		//JNikeAPIConnecter nike = new JNikeAPIConnecter("your access token");
-		
+		//JNikeLowLevelAPI nike = new JNikeLowLevelAPI("your access token");
 		JNikeAPIClient client = new JNikeAPIClient("your access token");
-		client.getAggregateSportDataObject();
 	}
 }

@@ -57,7 +57,7 @@ SOFTWARE.
  * @version 1.2
  */
 
-public class JNikeAPIConnecter {
+public class JNikeLowLevelAPI {
 	//access token
 	private String access_token;
 	
@@ -83,7 +83,7 @@ public class JNikeAPIConnecter {
 	/**
 	 * @param access_token <a href="http://developer.nike.com/">Nike Developer Site</a> より取得したアクセストークン
 	 */
-	public JNikeAPIConnecter(final String access_token){
+	public JNikeLowLevelAPI(final String access_token){
 		this.access_token = access_token;
 	}
 	
@@ -93,7 +93,7 @@ public class JNikeAPIConnecter {
 	 * @param appid Http Headerへ挿入する Request Headers(<a href="http://developer.nike.com/">Nike Developer Site</a>を参照)
 	 * @param accept Http Headerへ挿入する Request Headers (<a href="http://developer.nike.com/">Nike Developer Site</a>を参照)
 	 */
-	public JNikeAPIConnecter(final String access_token, String appid, String accept){
+	public JNikeLowLevelAPI(final String access_token, String appid, String accept){
 		this.access_token = access_token;
 		this.appid = appid;
 		this.accept = accept;
