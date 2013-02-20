@@ -18,7 +18,7 @@ case of using jar file:
 
 Preparation
 --------
-You have to get Access_Token from Nike developer site
+You have to get Access_Token from <a href="https://developer.nike.com/">Nike developer site</a>
 
     https://developer.nike.com/
 
