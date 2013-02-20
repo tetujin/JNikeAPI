@@ -14,7 +14,7 @@ case of using jar file:
 1. download jar files. 
  - <a href="./lib">JNikeAPI.jar</a> 
  - <a href="./lib">JSON.jar</a>. (This jar file made by this <a href="http://www.json.org/java/">site</a>)
-2. setting class pass
+2. setting class path
 
 Preparation
 --------
