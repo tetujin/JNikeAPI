@@ -50,19 +50,19 @@ If you use this APIs, you can receive data type of [JSONObject](https://github.c
  
 1) Aggregate Sport Data
 
-    AggregateSportDataObject values = nikeApi.getAggregateSportData();
+    AggregateSportData values = nikeApi.getAggregateSportData();
 
 2) List Activities.
     
-    ListActivitiesObject value = nikeApi.getListActivities();
+    ListActivities value = nikeApi.getListActivities();
 
 3) Activity Detail
     
-    DetailActivityObject value = nikeApi.getDetailActivity("activityID");
+    DetailActivity value = nikeApi.getDetailActivity("activityID");
     
 4) GPS Data
     
-    GPSDataObject value = nikeApi.getGPSData("activityID");
+    GPSData value = nikeApi.getGPSData("activityID");
 
 
 
