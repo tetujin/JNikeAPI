@@ -14,11 +14,11 @@ case of using jar file:
 1. download jar files. 
  - <a href="./lib">JNikeAPI.jar</a> 
  - <a href="./lib">JSON.jar</a>. (This jar file made by this <a href="http://www.json.org/java/">site</a>)
-2. setting class pass
+2. setting class path
 
 Preparation
 --------
-You have to get Access_Token from Nike developer site
+You have to get Access_Token from <a href="https://developer.nike.com/">Nike developer site</a>
 
     https://developer.nike.com/
 
@@ -50,19 +50,19 @@ If you use this APIs, you can receive data type of [JSONObject](https://github.c
  
 1) Aggregate Sport Data
 
-    AggregateSportDataObject values = nikeApi.getAggregateSportDataObject();
+    AggregateSportDataObject values = nikeApi.getAggregateSportData();
 
 2) List Activities.
     
-    ListActivitiesObject value = nikeApi.getListActivitiesObject();
+    ListActivitiesObject value = nikeApi.getListActivities();
 
 3) Activity Detail
     
-    DetailActivityObject value = nikeApi.getDetailActivityObject("activityID");
+    DetailActivityObject value = nikeApi.getDetailActivity("activityID");
     
 4) GPS Data
     
-    GPSDataObject value = nikeApi.getGPSDataObject("activityID");
+    GPSDataObject value = nikeApi.getGPSData("activityID");
 
 
 
